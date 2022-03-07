@@ -10,12 +10,12 @@ interface CategoryProps {
     isActive: boolean;
 }
 
-export const Container = styled.View`
+export const Container = styled(GestureHandlerRootView)`
     flex: 1;
     background-color: ${({ theme }) => theme.colors.background};
 `;
 
-export const Header = styled(GestureHandlerRootView)`
+export const Header = styled.View`
     width: 100%
     height: ${RFValue(113)}px;
     
@@ -56,7 +56,7 @@ export const Name = styled.Text`
 `;
 
 export const Separator = styled.View`
-    height: 1;
+   
     width: 100%;
     background-color: ${({ theme }) => theme.colors.text};
     `;
@@ -65,5 +65,3 @@ export const Footer = styled.View`
     width: 100%;
     padding: 24px;
     `;
-
-export const ButtonText = styled.Text``;

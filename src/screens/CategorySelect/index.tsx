@@ -11,7 +11,6 @@ import {
     Name,
     Separator,
     Footer,
-    ButtonText
 } from "./styles";
 
 interface Category {
@@ -23,11 +22,13 @@ export interface Props {
     category: Category;
     setCategory: (category: Category) => void;
     closeSelectCategory?: () => void;
+    onPress: () => void;
 }
 export function CategorySelect({ 
     category,
     setCategory,
-    closeSelectCategory 
+    closeSelectCategory,
+    onPress
 }: Props 
 ){
 
@@ -60,7 +61,7 @@ export function CategorySelect({
             <Footer>
                 <Button
                     title="Selecionar"
-                    onPress={closeSelectCategory}
+                    onPress={onPress}
                 />
             </Footer>
         </Container>

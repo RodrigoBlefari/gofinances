@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { 
-    Keyboard, 
-    Modal, 
+import {
+    Keyboard,
+    Modal,
     TouchableWithoutFeedback,
     Alert
- } from "react-native";
+} from "react-native";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -32,12 +32,14 @@ interface FomData {
 
 const schema = Yup.object().shape({
     name: Yup.
-    string().
-    required('Nome é obrigatório'),
+        string().
+        required('Nome é obrigatório'),
     amount: Yup
-    .number()
-    .typeError('Informe um valor númerico')
-    .positive('O valor não pode ser negativo')
+        .number()
+        .typeError('Informe um valor númerico')
+        .positive('O valor não pode ser negativo')
+        .required('O Valor é obrigatório')
+        
 })
 
 export function Register() {
@@ -69,16 +71,18 @@ export function Register() {
 
 
     function handleCloseSelectCategoryModal() {
+        console.log('dsa');
+        
         setcategoryModalOpen(false);
     }
 
     function handleRegister(form: FomData) {
-        
-        if(!transactionType)
+
+        if (!transactionType)
             return Alert.alert('Selecione um tipo');
 
-        if(category.key === 'category')
-        return Alert.alert('Selecione a categoria');
+        if (category.key === 'category')
+            return Alert.alert('Selecione a categoria');
 
         const data = {
             name: form.name,
@@ -110,7 +114,7 @@ export function Register() {
                             autoCapitalize="sentences"
                             autoCorrect={false}
                             error={errors.name && errors.name.message}
-                            />
+                        />
 
                         <InputForm
                             name="amount"
@@ -152,6 +156,7 @@ export function Register() {
                         category={category}
                         setCategory={setCategory}
                         closeSelectCategory={handleCloseSelectCategoryModal}
+                        onPress={handleCloseSelectCategoryModal}
                     />
                 </Modal>
             </Container>
